@@ -1,0 +1,37 @@
+generated: '2026-08-26'
+method: probed
+source: >-
+  DNS + HTTP probes of mcp.samacare.com and https://api.samacare.com/mcp, plus a search of
+  SamaCare's public site and GitHub org — 2026-08-26
+status: none
+note: >-
+  SamaCare ships no MCP server, hosted or local. mcp.samacare.com does not resolve;
+  api.samacare.com/mcp answers 401 like every other path on that host (the blanket Bearer
+  gate, not an MCP endpoint); no @samacare npm package is an MCP server; the public GitHub
+  org holds no MCP repo. No candidate tool list could be derived either, because SamaCare
+  publishes no OpenAPI, GraphQL SDL or any other machine-readable contract to derive tools
+  from. No MCPServer pointer is wired into apis.yml — this file records an absence, not a
+  surface.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: probed
+tools: []
+evidence:
+- url: https://mcp.samacare.com/mcp
+  status: 0
+  finding: DNS does not resolve (NXDOMAIN)
+- url: https://api.samacare.com/mcp
+  status: 401
+  finding: >-
+    POST tools/list returned the same Bearer challenge served on every path; not an MCP
+    endpoint
+- url: https://registry.npmjs.org/-/v1/search?text=@samacare
+  status: 200
+  finding: 4 packages in scope, none an MCP server
+- url: https://api.github.com/orgs/SamaCare/repos
+  status: 200
+  finding: 4 public repos, none an MCP server

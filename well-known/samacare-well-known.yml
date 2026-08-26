@@ -1,0 +1,61 @@
+generated: '2026-08-26'
+method: probed
+source: live GET probes of /.well-known/* on every SamaCare host in apis.yml
+note: >-
+  No SamaCare host serves a /.well-known document. The marketing site (Webflow) answers
+  every /.well-known/* path with a 404 HTML body reading "Invalid .well-known request".
+  The API host api.samacare.com answers every path — /.well-known/* included — with an
+  HTTP 401 and an RFC 6750 challenge (WWW-Authenticate: Bearer error="invalid_token",
+  error_description="Missing Authorization header"), so even anonymous discovery documents
+  are behind the token gate. app.samacare.com is a single-page app whose catch-all returns
+  HTTP 200 with the app HTML shell for every path; those 200s are NOT documents and are
+  recorded as misses. No WellKnown or SecurityTxt pointer is emitted, because nothing was
+  served.
+hosts:
+- host: www.samacare.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: api.samacare.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/openid-configuration
+    status: 401
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+  - path: /.well-known/agent.json
+    status: 401
+- host: app.samacare.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: SPA catch-all returned the application HTML shell, not a document — treated as a miss.
+  - path: /.well-known/agent-card.json
+    status: 200
+    note: SPA catch-all returned the application HTML shell, not an AgentCard — treated as a miss.
+  - path: /.well-known/agent.json
+    status: 200
+    note: SPA catch-all returned the application HTML shell, not an AgentCard — treated as a miss.
+- host: help.samacare.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404

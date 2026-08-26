@@ -1,0 +1,41 @@
+# llms.txt for www.samacare.com
+# We welcome reputable LLM providers to access our public content,
+# especially to support accurate, cited answers in chatbot interfaces.
+
+Contact: mailto:jillian@samacare.com
+
+User-agent: *
+Disallow: /
+
+User-agent: openai
+Allow: /
+
+User-agent: anthropic
+Allow: /
+
+User-agent: google
+Allow: /
+
+User-agent: perplexity
+Allow: /
+
+User-agent: meta
+Allow: /
+
+User-agent: mistral
+Allow: /
+
+User-agent: cohere
+Allow: /
+
+User-agent: huggingface
+Allow: /
+
+User-agent: ai21
+Allow: /
+
+User-agent: you.com
+Allow: /
+
+# High-value content
+Allow: /res

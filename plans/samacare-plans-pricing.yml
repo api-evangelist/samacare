@@ -1,0 +1,32 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  https://www.samacare.com/ , https://samacare.com/providers ,
+  https://www.samacare.com/samacare-plus , https://samacare.com/ecosystem — searched
+  2026-08-26. No /pricing or /plans URL exists in https://www.samacare.com/sitemap.xml.
+plan_count: 0
+pricing_model: contact-sales
+note: >-
+  SamaCare publishes no pricing page, no plan tiers, no rate card and no API metering terms.
+  The sitemap contains no /pricing or /plans URL, and the provider, life-sciences and
+  SamaCare Plus product pages all end in a "Request Access" / "Request Demo" /
+  "Schedule a Call" call to action instead of a price. Third-party coverage reports that the
+  practice-facing platform is offered at no cost to qualifying specialty practices, funded by
+  pharmaceutical-manufacturer partnerships, but SamaCare does not state that on any page we
+  fetched, so it is recorded as unverified rather than as a published plan. There is no
+  self-serve API plan of any kind: platform API access is arranged through an EHR/RCM
+  partnership or customer agreement.
+plans: []
+evidence:
+- url: https://www.samacare.com/
+  status: 200
+  finding: no pricing statement
+- url: https://samacare.com/providers
+  status: 200
+  finding: '"Request Access" / "Request Demo" CTAs, no cost or tier stated'
+- url: https://www.samacare.com/samacare-plus
+  status: 200
+  finding: no pricing, no tiers, no statement of who pays
+- url: https://www.samacare.com/sitemap.xml
+  status: 200
+  finding: no /pricing or /plans URL published

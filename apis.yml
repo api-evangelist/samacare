@@ -1,18 +1,59 @@
 aid: samacare
 name: SamaCare
-description: 'SamaCare is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  SamaCare operates a medical benefit prior authorization platform used by specialty
+  practices in oncology, rheumatology, neurology, retina/ophthalmology and infusion care to
+  submit, track and renew prior authorizations for provider-administered ("buy and bill")
+  drugs across every payer in one place. The platform combines payer-specific form
+  intelligence and auto-fill, human-in-the-loop AI, status tracking and expiration
+  reminders with one-click re-authorization, and a market-access analytics layer that
+  pharmaceutical manufacturers license for benchmark and patient-access insight. SamaCare
+  states it has processed more than two million medical benefit prior authorizations
+  representing over $6B in annual drug spend, and integrates into practice systems —
+  NextGen Enterprise and ModMed EMRs among them — over an API-based two-way exchange of
+  demographic data and clinical documentation. The platform API is served from
+  api.samacare.com behind an OAuth 2.0 Bearer challenge and is arranged through EHR/RCM
+  partnership rather than a public developer program; no public API reference, OpenAPI
+  contract or self-serve key issuance is published.
+image: https://cdn.prod.website-files.com/5ea98938698e3343f5ac98f0/69e7a448f55840e8a85dc35f_1200x630.png
 url: https://raw.githubusercontent.com/api-evangelist/samacare/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment
 specificationVersion: '0.20'
 created: '2026-08-26'
 modified: '2026-08-26'
 tags:
 - Company
-apis: []
+- Healthcare
+- Health Care
+- Prior Authorization
+- Patient Access
+- Specialty Pharmacy
+- Life Sciences
+- Electronic Health Records
+- Revenue Cycle Management
+- Market Access
+- Artificial Intelligence
+apis:
+- aid: samacare-platform-api
+  name: SamaCare Platform API
+  description: >-
+    The private integration API behind the SamaCare prior authorization platform, used for
+    two-way exchange of patient demographic data, clinical documentation and prior
+    authorization status between SamaCare and partner EHR, EMR and RCM systems. The host
+    answers every path with an RFC 6750 Bearer challenge; there is no public reference,
+    contract or self-serve onboarding.
+  humanURL: https://samacare.com/ecosystem
+  baseURL: https://api.samacare.com
+  tags:
+  - Prior Authorization
+  - Healthcare
+  - Electronic Health Records
+  properties:
+  - type: Authentication
+    url: authentication/samacare-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +61,59 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://www.samacare.com/
+- type: Support
+  url: https://help.samacare.com/
+- type: HelpCenter
+  url: https://help.samacare.com/
+- type: Blog
+  url: https://samacare.com/resources
+- type: GitHubOrganization
+  url: https://github.com/SamaCare
+- type: Login
+  url: https://app.samacare.com/
+- type: TermsOfService
+  url: https://samacare.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://samacare.com/privacy-policy
+- type: Compliance
+  url: conformance/samacare-conformance.yml
+- type: Conformance
+  url: conformance/samacare-conformance.yml
+- type: LLMsTxt
+  url: llms/samacare-llms.txt
+- type: Packages
+  url: packages/samacare-packages.yml
+- type: Authentication
+  url: authentication/samacare-authentication.yml
+- type: DomainSecurity
+  url: security/samacare-domain-security.yml
+- type: Plans
+  url: plans/samacare-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/samacare-rate-limits.yml
+x-enrichment:
+  date: '2026-08-26'
+  status: enriched
+  artifacts_added: 9
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: sales-gate
+  detail: >-
+    SamaCare runs a real platform API at api.samacare.com — an Express service that answers
+    every single path, /docs, /openapi.json, /graphql and /.well-known/* included, with HTTP
+    401 and WWW-Authenticate: Bearer error="invalid_token" — but publishes no developer
+    portal, no API reference and no OpenAPI anywhere; the sitemap has no developer URL and
+    every product page ends in a "Request Access" / "Request Demo" CTA where a reference
+    would be.
+  evidence:
+  - url: https://api.samacare.com/openapi.json
+    status: 401
+  - url: https://api.samacare.com/graphql
+    status: 401
+  - url: https://www.samacare.com/openapi.json
+    status: 404
+  - url: https://www.samacare.com/sitemap.xml
+    status: 200
+  checked: '2026-08-26'

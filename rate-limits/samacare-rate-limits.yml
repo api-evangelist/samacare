@@ -1,0 +1,26 @@
+generated: '2026-08-26'
+method: probed
+source: >-
+  https://api.samacare.com (live response headers, 2026-08-26) plus a search of every public
+  SamaCare page for a documented limit.
+limit_count: 0
+note: >-
+  SamaCare documents no rate limits anywhere public — there is no developer portal, no API
+  reference and no docs host to publish them on. The live API host was probed anonymously and
+  returns HTTP 401 on every path before any limit is evaluated, so no runtime signal is
+  observable either: the 401 response carries date, content-type, content-length,
+  x-powered-by, x-content-type-options, www-authenticate and etag, and NO RateLimit-*,
+  X-RateLimit-*, or Retry-After header. Whether limits exist behind the token gate cannot be
+  determined without credentials. An honest zero.
+headers_observed: []
+headers_documented: []
+status_on_exhaustion: null
+limits: []
+evidence:
+- url: https://api.samacare.com/
+  status: 401
+  finding: >-
+    no RateLimit-*, X-RateLimit-* or Retry-After header present on the anonymous response
+- url: https://www.samacare.com/sitemap.xml
+  status: 200
+  finding: no developer, docs, or API reference URL exists to carry a published limit

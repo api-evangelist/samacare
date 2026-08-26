@@ -1,0 +1,47 @@
+generated: '2026-08-26'
+method: probed
+source: >-
+  live HTTP probes of https://api.samacare.com (root, /docs, /graphql, /openapi.json,
+  /.well-known/*) — 2026-08-26
+note: >-
+  Derived from the live challenge, not from a published contract: SamaCare publishes no
+  OpenAPI, no auth reference and no developer portal. Every path on api.samacare.com,
+  without exception, returns HTTP 401 with an RFC 6750 Bearer challenge. The scheme below
+  is what the server itself asserts; the token issuance flow (authorization server,
+  grant type, scopes, lifetime) is NOT observable anonymously and is NOT recorded here.
+docs: null
+schemes:
+- id: bearerAuth
+  type: http
+  scheme: bearer
+  in: header
+  header: Authorization
+  evidence: >-
+    WWW-Authenticate: Bearer error="invalid_token",
+    error_description="Missing Authorization header"
+  error_envelope: '{"error":{"code":"UNAUTHORIZED","message":"Missing Authorization header"}}'
+  status_on_missing_credential: 401
+oauth2_metadata:
+  authorization_server_discovered: false
+  probes:
+  - url: https://api.samacare.com/.well-known/oauth-authorization-server
+    status: 401
+  - url: https://api.samacare.com/.well-known/openid-configuration
+    status: 401
+  - url: https://www.samacare.com/.well-known/openid-configuration
+    status: 404
+  note: >-
+    The Bearer challenge is RFC 6750 shaped, but no authorization-server metadata document
+    is reachable anonymously, so we cannot confirm whether tokens are issued by an OAuth 2.0
+    authorization server or are opaque partner-issued API tokens. Recorded as unknown rather
+    than guessed.
+onboarding:
+  self_serve: false
+  how_access_is_obtained: >-
+    Through an EHR/EMR/RCM partnership or a customer agreement arranged via
+    https://samacare.com/contact-us — there is no public key issuance, signup-for-an-API
+    flow, or sandbox.
+server:
+  x_powered_by: Express
+  x_content_type_options: nosniff
+  tls_version: TLSv1.3

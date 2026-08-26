@@ -1,0 +1,76 @@
+generated: '2026-08-26'
+method: searched
+source: https://samacare.com/faq-uses-of-data
+note: >-
+  SamaCare publishes no machine-readable contract, so nothing here is derived from a spec.
+  Every entry below is either a compliance claim quoted from SamaCare's own public pages or
+  a protocol fact observed on the live api.samacare.com challenge. Healthcare domain
+  standards (HL7 v2, FHIR R4, X12 278 prior authorization, NCPDP, CMS-0057-F) are the
+  shortlist worth probing for this sector; SamaCare's public pages say only that it
+  "participates in industry initiatives advancing interoperability and prior authorization
+  standards" without naming one, and no contract is published to check, so no domain
+  standard is asserted. Reward-only: absence here is not a finding against SamaCare, it is
+  an absence of evidence.
+compliance:
+- id: hipaa
+  conforms: true
+  evidence: >-
+    "SamaCare has rigorously performed the HIPAA/SOC2 Audit, and our data/systems are HIPAA
+    compliant." — https://samacare.com/faq-uses-of-data
+- id: soc2
+  conforms: true
+  evidence: >-
+    "SamaCare has rigorously performed the HIPAA/SOC2 Audit" — audit asserted on
+    https://samacare.com/faq-uses-of-data. No report type (Type I vs Type II), audit period,
+    auditor or trust center is published, and no attestation document is downloadable.
+- id: hipaa-safe-harbor-deidentification
+  conforms: true
+  evidence: >-
+    "We use a method known as the HIPAA Safe Harbor Provision to de-identify data shared with
+    drug companies." — https://samacare.com/faq-uses-of-data
+- id: encryption-at-rest-and-in-transit
+  conforms: true
+  evidence: >-
+    "Enterprise grade security measures, including encryption at-rest and in-transit,
+    advanced intrusion detection" — https://samacare.com/faq-uses-of-data
+- id: tls13
+  conforms: true
+  evidence: TLSv1.3 negotiated on www.samacare.com, samacare.com and api.samacare.com (probed 2026-08-26).
+- id: hsts
+  conforms: partial
+  evidence: >-
+    HSTS max-age=31536000 on www.samacare.com and samacare.com; NO Strict-Transport-Security
+    header on api.samacare.com (probed 2026-08-26).
+- id: rfc6750-bearer
+  conforms: true
+  evidence: >-
+    api.samacare.com returns WWW-Authenticate: Bearer error="invalid_token",
+    error_description="Missing Authorization header" — the RFC 6750 challenge form (probed
+    2026-08-26).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Errors use a proprietary envelope {"error":{"code":...,"message":...}} with
+    Content-Type application/json, not application/problem+json (probed 2026-08-26).
+- id: oauth2
+  conforms: unknown
+  evidence: >-
+    Bearer tokens are required but no authorization-server metadata is reachable anonymously
+    (/.well-known/oauth-authorization-server -> 401), so the issuance model cannot be
+    confirmed.
+domain_standards:
+- id: fhir
+  conforms: unknown
+  evidence: Not named on any public SamaCare page; no contract published to check.
+- id: x12-278
+  conforms: unknown
+  evidence: Not named on any public SamaCare page; no contract published to check.
+- id: hl7v2
+  conforms: unknown
+  evidence: Not named on any public SamaCare page; no contract published to check.
+- id: cms-0057-f
+  conforms: unknown
+  evidence: >-
+    SamaCare states it "participates in industry initiatives advancing interoperability and
+    prior authorization standards" (https://samacare.com/ecosystem) but names no rule or
+    specification.

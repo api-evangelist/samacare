@@ -1,0 +1,86 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  registry.npmjs.org (@samacare scope), pypi.org, api.github.com/orgs/SamaCare — searched
+  2026-08-26
+note: >-
+  SamaCare publishes NO client SDK for its platform API. The four packages below are the
+  entire published first-party footprint and every one of them is internal engineering
+  tooling — a shared ESLint config, a metrics client, a Node diagnostics collector and a
+  fork of io-ts-types — not a library that wraps api.samacare.com. No `SDKs` pointer is
+  emitted in apis.yml for that reason: sdk_count would be credited for libraries that do
+  not call the API. Every package is dormant: the newest release is 2022-04-27, more than
+  four years stale, and the @samacare npm scope has published nothing since. PyPI, RubyGems,
+  Maven Central, NuGet, crates.io and pkg.go.dev return no SamaCare package. The public
+  GitHub org github.com/SamaCare holds four repos, three of them upstream forks
+  (puppeteer-extra, io-ts-types) or an archived engineering-practices doc; none is an API
+  client.
+sdk_count: 0
+package_count: 4
+packages:
+- name: '@samacare/eslint-config'
+  registry: npm
+  url: https://www.npmjs.com/package/@samacare/eslint-config
+  version: 2.0.0
+  published: '2022-02-17'
+  license: ISC
+  official: true
+  api_client: false
+  purpose: Shared ESLint configuration for SamaCare's internal JavaScript codebases.
+- name: '@samacare/metrics-client'
+  registry: npm
+  url: https://www.npmjs.com/package/@samacare/metrics-client
+  version: 1.0.0
+  published: '2021-10-27'
+  license: UNLICENSED
+  official: true
+  api_client: false
+  purpose: SamaCare's internal Node.js metrics client.
+- name: '@samacare/node-runtime-stats'
+  registry: npm
+  url: https://www.npmjs.com/package/@samacare/node-runtime-stats
+  version: 1.0.5
+  published: '2022-04-27'
+  license: MIT
+  official: true
+  api_client: false
+  purpose: Collects Node diagnostics information and publishes it to a diagnostics channel.
+- name: '@samacare/io-ts-types'
+  registry: npm
+  url: https://www.npmjs.com/package/@samacare/io-ts-types
+  version: 1.0.0-beta.2
+  published: '2022-04-27'
+  license: MIT
+  official: true
+  api_client: false
+  purpose: SamaCare-scoped republish of the io-ts-types codec library.
+registries_checked:
+- registry: npm
+  result: 4 packages under the @samacare scope; none is an API client
+- registry: PyPI
+  result: no package (pypi.org/pypi/samacare/json -> 404)
+- registry: RubyGems
+  result: no package
+- registry: Maven Central
+  result: no package
+- registry: NuGet
+  result: no package
+- registry: crates.io
+  result: no package
+- registry: pkg.go.dev
+  result: no package
+repositories:
+- url: https://github.com/SamaCare/shared-code
+  language: JavaScript
+  last_push: '2022-07-07'
+- url: https://github.com/SamaCare/io-ts-types
+  language: TypeScript
+  last_push: '2022-04-27'
+- url: https://github.com/SamaCare/puppeteer-extra
+  language: null
+  last_push: '2020-04-13'
+  note: fork of the upstream puppeteer-extra project
+- url: https://github.com/SamaCare/eng-practices
+  language: null
+  last_push: '2023-12-04'
+  archived: true
