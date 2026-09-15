@@ -1,20 +1,16 @@
 aid: samacare
 name: SamaCare
-description: >-
-  SamaCare operates a medical benefit prior authorization platform used by specialty
-  practices in oncology, rheumatology, neurology, retina/ophthalmology and infusion care to
-  submit, track and renew prior authorizations for provider-administered ("buy and bill")
-  drugs across every payer in one place. The platform combines payer-specific form
-  intelligence and auto-fill, human-in-the-loop AI, status tracking and expiration
-  reminders with one-click re-authorization, and a market-access analytics layer that
-  pharmaceutical manufacturers license for benchmark and patient-access insight. SamaCare
-  states it has processed more than two million medical benefit prior authorizations
-  representing over $6B in annual drug spend, and integrates into practice systems —
-  NextGen Enterprise and ModMed EMRs among them — over an API-based two-way exchange of
-  demographic data and clinical documentation. The platform API is served from
-  api.samacare.com behind an OAuth 2.0 Bearer challenge and is arranged through EHR/RCM
-  partnership rather than a public developer program; no public API reference, OpenAPI
-  contract or self-serve key issuance is published.
+description: SamaCare operates a medical benefit prior authorization platform used by specialty practices
+  in oncology, rheumatology, neurology, retina/ophthalmology and infusion care to submit, track and renew
+  prior authorizations for provider-administered ("buy and bill") drugs across every payer in one place.
+  The platform combines payer-specific form intelligence and auto-fill, human-in-the-loop AI, status tracking
+  and expiration reminders with one-click re-authorization, and a market-access analytics layer that pharmaceutical
+  manufacturers license for benchmark and patient-access insight. SamaCare states it has processed more
+  than two million medical benefit prior authorizations representing over $6B in annual drug spend, and
+  integrates into practice systems — NextGen Enterprise and ModMed EMRs among them — over an API-based
+  two-way exchange of demographic data and clinical documentation. The platform API is served from api.samacare.com
+  behind an OAuth 2.0 Bearer challenge and is arranged through EHR/RCM partnership rather than a public
+  developer program; no public API reference, OpenAPI contract or self-serve key issuance is published.
 deliveryModel:
   model: saas
   open_source: false
@@ -45,7 +41,9 @@ image: https://cdn.prod.website-files.com/5ea98938698e3343f5ac98f0/69e7a448f5584
 url: https://raw.githubusercontent.com/api-evangelist/samacare/refs/heads/main/apis.yml
 x-api-posture: no-product-api
 x-api-posture-basis: observed
-x-api-posture-note: "The platform API is served from api.samacare.com behind an OAuth 2.0 Bearer challenge and is arranged through EHR/RCM partnership rather than a public developer program; no public API reference, OpenA"
+x-api-posture-note: The platform API is served from api.samacare.com behind an OAuth 2.0 Bearer challenge
+  and is arranged through EHR/RCM partnership rather than a public developer program; no public API reference,
+  OpenA
 x-type: company
 x-source: harvest:secondary-market
 x-tier: profiled
@@ -77,14 +75,12 @@ tags_raw:
 - Market Access
 - Artificial Intelligence
 apis:
-- aid: samacare-platform-api
+- aid: samacare:samacare-platform-api
   name: SamaCare Platform API
-  description: >-
-    The private integration API behind the SamaCare prior authorization platform, used for
-    two-way exchange of patient demographic data, clinical documentation and prior
-    authorization status between SamaCare and partner EHR, EMR and RCM systems. The host
-    answers every path with an RFC 6750 Bearer challenge; there is no public reference,
-    contract or self-serve onboarding.
+  description: The private integration API behind the SamaCare prior authorization platform, used for
+    two-way exchange of patient demographic data, clinical documentation and prior authorization status
+    between SamaCare and partner EHR, EMR and RCM systems. The host answers every path with an RFC 6750
+    Bearer challenge; there is no public reference, contract or self-serve onboarding.
   humanURL: https://samacare.com/ecosystem
   baseURL: https://api.samacare.com
   tags:
@@ -140,13 +136,11 @@ x-enrichment:
 x-coverage:
   state: gated
   reason: sales-gate
-  detail: >-
-    SamaCare runs a real platform API at api.samacare.com — an Express service that answers
-    every single path, /docs, /openapi.json, /graphql and /.well-known/* included, with HTTP
-    401 and WWW-Authenticate: Bearer error="invalid_token" — but publishes no developer
-    portal, no API reference and no OpenAPI anywhere; the sitemap has no developer URL and
-    every product page ends in a "Request Access" / "Request Demo" CTA where a reference
-    would be.
+  detail: 'SamaCare runs a real platform API at api.samacare.com — an Express service that answers every
+    single path, /docs, /openapi.json, /graphql and /.well-known/* included, with HTTP 401 and WWW-Authenticate:
+    Bearer error="invalid_token" — but publishes no developer portal, no API reference and no OpenAPI
+    anywhere; the sitemap has no developer URL and every product page ends in a "Request Access" / "Request
+    Demo" CTA where a reference would be.'
   evidence:
   - url: https://api.samacare.com/openapi.json
     status: 401
